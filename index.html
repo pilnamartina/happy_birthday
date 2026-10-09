@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Všetko najlepšie k narodeninám 🎂</title>
+<meta property="og:title" content="Všetko najlepšie k narodeninám 🎂">
+<meta property="og:description" content="Otvor a sfúkni sviečky!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#2A1440; --bg2:#3B1D5A; --gold:#F5B82E; --pink:#FF7AA8; --mint:#7FE0C3; --text:#FFF4E0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){ --bg:#2A1440; }
+}
+:root[data-theme="light"],:root[data-theme="dark"]{ --bg:#2A1440; }
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;min-height:100%;
+  background:radial-gradient(120% 80% at 50% 110%, var(--bg2), var(--bg) 60%);
+  background-color:var(--bg);
+  color:var(--text);
+  font-family:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;overflow-x:hidden;
+}
+main{width:100%;max-width:560px;padding:32px 24px 40px;position:relative;z-index:2}
+h1{
+  font-family:"Lobster","Georgia",serif;font-weight:400;
+  font-size:clamp(2.4rem,10vw,4rem);line-height:1.05;margin:0 0 8px;
+  color:var(--gold);
+  text-shadow:3px 3px 0 var(--pink), 6px 6px 0 rgba(0,0,0,.25);
+}
+h1 span{display:block}
+.cake-btn{
+  background:none;border:0;padding:0;margin:28px auto 8px;display:block;cursor:pointer;
+  width:min(260px,70vw);-webkit-tap-highlight-color:transparent;border-radius:16px;
+}
+.cake-btn:focus-visible{outline:3px solid var(--mint);outline-offset:6px}
+.cake-btn svg{width:100%;height:auto;display:block}
+.flame{transform-origin:center bottom;transform-box:fill-box;animation:flicker .9s ease-in-out infinite alternate}
+.flame:nth-of-type(2){animation-delay:.2s}.flame:nth-of-type(3){animation-delay:.45s}
+@keyframes flicker{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.88,1.08) rotate(3deg)}}
+.out .flame{animation:none;transform:scale(0);transition:transform .25s ease-in}
+.smoke{opacity:0}
+.out .smoke{animation:smoke 1.6s ease-out forwards}
+@keyframes smoke{0%{opacity:.7;transform:translateY(0)}100%{opacity:0;transform:translateY(-30px)}}
+.hint{font-size:1.05rem;font-weight:700;color:var(--mint);margin:0;min-height:1.5em}
+.wish{font-size:1.15rem;line-height:1.6;max-width:30ch;margin:14px auto 0;opacity:0;transition:opacity .8s ease .4s}
+.done .wish{opacity:1}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+@media (prefers-reduced-motion: reduce){
+  .flame{animation:none}
+}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<main id="m">
+  <h1><span>Všetko najlepšie</span><span>k narodeninám!</span></h1>
+
+  <button class="cake-btn" id="cake" aria-label="Sfúknuť sviečky">
+    <svg viewBox="0 0 200 190" aria-hidden="true">
+      <!-- candles -->
+      <g>
+        <rect x="62" y="40" width="10" height="40" rx="3" fill="#7FE0C3"/>
+        <rect x="95" y="32" width="10" height="48" rx="3" fill="#FF7AA8"/>
+        <rect x="128" y="40" width="10" height="40" rx="3" fill="#7FE0C3"/>
+        <path class="flame" d="M67 38c-6-6-2-14 0-20 2 6 6 14 0 20z" fill="#F5B82E"/>
+        <path class="flame" d="M100 30c-6-6-2-14 0-20 2 6 6 14 0 20z" fill="#F5B82E"/>
+        <path class="flame" d="M133 38c-6-6-2-14 0-20 2 6 6 14 0 20z" fill="#F5B82E"/>
+        <g class="smoke" fill="#cfc3dd">
+          <circle cx="67" cy="30" r="4"/><circle cx="100" cy="22" r="4"/><circle cx="133" cy="30" r="4"/>
+        </g>
+      </g>
+      <!-- cake -->
+      <rect x="30" y="80" width="140" height="44" rx="10" fill="#FF7AA8"/>
+      <path d="M30 92c12 10 23 10 35 0s23-10 35 0 23 10 35 0 23-10 35 0V88a10 10 0 0 0-10-8H40a10 10 0 0 0-10 8z" fill="#FFF4E0"/>
+      <rect x="18" y="122" width="164" height="48" rx="12" fill="#F5B82E"/>
+      <path d="M18 134c14 10 27 10 41 0s27-10 41 0 27 10 41 0 27-10 41 0v-2a12 12 0 0 0-12-10H30a12 12 0 0 0-12 10z" fill="#FFF4E0"/>
+      <circle cx="50" cy="150" r="4" fill="#2A1440"/><circle cx="85" cy="155" r="4" fill="#7FE0C3"/>
+      <circle cx="120" cy="150" r="4" fill="#2A1440"/><circle cx="152" cy="156" r="4" fill="#7FE0C3"/>
+      <rect x="6" y="168" width="188" height="10" rx="5" fill="#cfc3dd"/>
+    </svg>
+  </button>
+
+  <p class="hint" id="hint">Ťukni na tortu a niečo si praj</p>
+  <p class="wish">Veľa zdravia, šťastia, lásky praje Maťa</p>
+</main>
+
+<script>
+(function(){
+  var cake=document.getElementById('cake'), m=document.getElementById('m'), hint=document.getElementById('hint');
+  var cv=document.getElementById('c'), ctx=cv.getContext('2d'), parts=[], running=false;
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){var d=window.devicePixelRatio||1;cv.width=innerWidth*d;cv.height=innerHeight*d;ctx.setTransform(d,0,0,d,0,0)}
+  size();addEventListener('resize',size);
+  var cols=['#F5B82E','#FF7AA8','#7FE0C3','#FFF4E0'];
+  function burst(){
+    var n=reduce?40:160;
+    for(var i=0;i<n;i++){
+      parts.push({x:innerWidth/2,y:innerHeight*0.55,vx:(Math.random()-.5)*14,vy:-Math.random()*16-4,
+        r:Math.random()*6+4,c:cols[i%4],a:Math.random()*6,va:(Math.random()-.5)*.3,life:0});
+    }
+    if(!running){running=true;requestAnimationFrame(tick)}
+  }
+  function tick(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    parts=parts.filter(function(p){return p.y<innerHeight+40 && p.life<400});
+    parts.forEach(function(p){
+      p.vy+=.35;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;p.life++;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.fillStyle=p.c;
+      ctx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);ctx.restore();
+    });
+    if(parts.length)requestAnimationFrame(tick);else{running=false;ctx.clearRect(0,0,innerWidth,innerHeight)}
+  }
+  cake.addEventListener('click',function(){
+    if(!cake.classList.contains('out')){
+      cake.classList.add('out');m.classList.add('done');
+      hint.textContent='Želanie je na ceste 🎉';
+      cake.setAttribute('aria-label','Znova zapáliť sviečky');
+      burst();
+      if(navigator.vibrate)try{navigator.vibrate(60)}catch(e){}
+    }else{
+      cake.classList.remove('out');
+      hint.textContent='Ťukni na tortu a niečo si praj';
+      cake.setAttribute('aria-label','Sfúknuť sviečky');
+    }
+  });
+})();
+</script>
+</body>
+</html>
